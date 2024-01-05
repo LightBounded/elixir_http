@@ -8,8 +8,7 @@ defmodule ElixirHttp.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: ElixirHttp.Worker.start_link(arg)
-      # {ElixirHttp.Worker, arg}
+      {Plug.Cowboy, scheme: :http, plug: ElixirHttp.HelloWorld, options: [port: 8080]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
